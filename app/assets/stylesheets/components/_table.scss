@@ -1,0 +1,27 @@
+table {
+   border: 3px solid #A7D129;
+   color: #A7D129;
+   margin-left: auto;
+   margin-right: auto;
+   margin-top: 50px;
+   margin-bottom: 100px;
+   width: 80%;
+   height: 200px;
+   thead {
+    height: 24px;
+    font-size: 18px;
+    border-bottom: 3px solid #A7D129;
+    td {
+      align: center;
+      padding: 14px;
+    }
+   };
+   tbody {
+    font-size: 20px;
+    td {
+      padding: 10px;
+    }
+   }
+ }
+
+

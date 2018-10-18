@@ -1,0 +1,21 @@
+<%= simple_form_for [@cocktail, @dose] do |f| %>
+  <% if @dose.errors.any? %>
+    <div class="errors-container">
+      <ul>
+        <% @dose.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="form-group">
+    <%= f.input :description, html: {class: "input"} %>
+  </div>
+  <div class="form-group">
+    <%= f.input :ingredient_id, collection: Ingredient.all %>
+  </div>
+  <%= f.submit "Save", class: "btn btn-primary" %>
+<% end %>
+
+
+

@@ -12,7 +12,16 @@
   </head>
 
   <body>
+  <div class="navbar-wagon navbar-fixed-top">
+    <h1>Mister Cocktail</h1>
+    <div class="navbar-wagon-link">
+      <%= link_to "Add a cocktail", new_cocktail_path, class: "btn btn-primary" %>
+    </div>
+  </div>
+  <div class="black-wrapper">
     <%= yield %>
+  </div>
+
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %> <!-- from app/assets/javascripts/application.js -->
   <%= javascript_pack_tag "application" %>    <!-- from app/javascript/packs/application.js -->
   </body>
