@@ -1,26 +1,35 @@
 <div class="container">
   <h1><%= @cocktail.name %></h1>
-  <%= cl_image_tag @cocktail.photo, height: 300, width: 400, crop: :fill %>
-  <table class="table-dose">
-    <thead>
-      <tr>
-        <td>Dose</td>
-        <td>Ingredient</td>
-      </tr>
-    </thead>
-    <tbody>
-      <% @cocktail.doses.each do |c| %>
-        <tr>
-          <td>
-            <%= c.description %>
-          </td>
-          <td>
-            <%= c.ingredient.name %>
-          </td>
-        </tr>
-        <% end %>
-    </tbody>
-  </table>
+  <% if @cocktail.photo.file.nil? %>
+    <br>
+  <% else %>
+    <%= cl_image_tag @cocktail.photo, height: 400, width: 400, crop: :fill %>
+  <% end %>
+
+  <ul class="list-group list-group-cocktail">
+    <% @cocktail.doses.each do |c| %>
+      <li class="list-group-item">
+        <span class="badge"><%= c.ingredient.name %></span>
+        <%= c.description %>
+      </li>
+    <% end %>
+  </ul>
+
+  <%= simple_form_for [@cocktail, @review] do |f| %>
+    <%= f.input :content %>
+    <%= f.input :rating, collection: 1..5 %>
+    <%= f.submit "add a review", class: "btn btn-primary" %>
+  <% end %>
+
+  <h1>Review</h1>
+  <ul class="list-group list-group-cocktail">
+    <% @cocktail.reviews.each do |c| %>
+      <li class="list-group-item">
+        <span class="badge"><%= c.rating %></span>
+        <%= c.content %>
+      </li>
+    <% end %>
+  </ul>
 
   <div class="footer">
     <%= link_to "Add a dose", new_cocktail_dose_path(@cocktail), class: "btn btn-primary" %>
